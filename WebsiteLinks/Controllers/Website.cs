@@ -19,8 +19,9 @@ namespace WebsiteLinks.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+
         [HttpGet]
-        public ActionResult<IEnumerable<WebsiteGetDto>> GetWebsiteList()
+        public async Task<ActionResult<IEnumerable<WebsiteGetDto>>> GetWebsiteList()
         {
             _logger.LogInformation($"Match method {nameof(GetWebsiteList)}");
 
@@ -31,11 +32,12 @@ namespace WebsiteLinks.Controllers
         public async Task<ActionResult<WebsiteGetDto>> GetWebsiteInfo(
             [FromRoute]
             [Url]
-            string url,
+            Uri url,
             [FromQuery]
             bool request = false
         )
         {
+
             return await Ok();
         }
     }
